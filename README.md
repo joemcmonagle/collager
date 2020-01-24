@@ -34,7 +34,7 @@ I broke the workflow out into three phases, all runnable as different commands f
 1. `featurize` - This command will featurize whatever directory you specify for your candidate images. It's annoying to repeatedly featurize the same candidate images over and over as you're testing, so it will write out a pickled `DataFrame` that includes a line for each candidate image, a few nice-to-know details (like dimensions), as well as a column called `features`. For now, this is a 768 (256*3) long vector representing the histogram of the image. I normalize the histogram's color counts by the pixel count of the image to allow easy comparisons between images, regardless of their dimensions.
 ```
 python main.py featurize data/imagenet_validation data/features.pickle --processes 4
-docker run -v <PathA>/data:/data -i collager python main.py featurize <PathA>/data/<folder> /data/features.pickle --processes 4
+docker run -v <PathA>/data:/data -i collager python main.py featurize /data/<folder> /data/features.pickle --processes 4
 ```
 (This ran in about 7 minutes on 16GB of RAM with 4 cores.)
 
